@@ -14,7 +14,7 @@ export default function DashboardTemplate({ children }) {
           {data.map((item, index) => {
             return (
               <li>
-                <Link className="link">
+                <Link className="link" to={"/arizalar"}>
                   <span className="first">
                     <img src={item.img} alt="" />
                   </span>
