@@ -1,18 +1,18 @@
 import React from "react";
-// import styled from "styled-components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Dashboard from "./page/Dashboard";
-// import DashboardWrapper from "./page/DashboardWrapper";
-import DashboardTemplateWrapper from "./components/DashboardTemplate/DashboardTemplateWrapper";
+// import Dashboard from "./page/Arizalar";
+// import DashboardTemplateWrapper from "./components/DashboardTemplate/DashboardTemplateWrapper";
 import Products from "./page/Products";
-// import Layout from "./components/Pages/Layout";
+import DashboardTemplate from "./components/DashboardTemplate";
+import Arizalar from "./page/Arizalar/Arizalar";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<DashboardTemplateWrapper />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/" element={<DashboardTemplate />}></Route>
+        <Route path="/arizalar" element={<Arizalar />}></Route>
         <Route path="/dashboard/products" element={<Products />}></Route>
       </Routes>
     </Router>

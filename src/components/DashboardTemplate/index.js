@@ -30,7 +30,7 @@ export default function DashboardTemplate({ children }) {
       </aside>
 
       <div className="rightside">
-        <header>
+        <header className="shadow m-1 p-3">
           <div className="menuIcon">
             <Link className="listIcon">
               <i class="bi bi-list"></i>
@@ -43,7 +43,7 @@ export default function DashboardTemplate({ children }) {
             <h5>Davron</h5>
           </div>
         </header>
-        <main className="m-2">{children}</main>
+        <main className="shadow m-1 p-3">{children}</main>
       </div>
     </DashboardTemplateWrapper>
   );

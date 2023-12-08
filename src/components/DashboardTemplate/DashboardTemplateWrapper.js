@@ -87,7 +87,7 @@ const DashboardTemplateWrapper = styled.section`
     header {
       height: 9vh;
       color: black;
-      box-shadow: 0px 0px 2px 0px gray;
+      /* box-shadow: 0px 0px 2px 0px gray; */
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -133,7 +133,7 @@ const DashboardTemplateWrapper = styled.section`
     main {
       height: calc(100% - 8vh);
       color: black;
-      box-shadow: 0px 0px 2px 0px gray;
+      /* box-shadow: 0px 0px 2px 0px gray; */
     }
   }
 `;
