@@ -1,26 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Express24 from "../../img/image 15 (1).png";
-// import Arizalar from "../../page/Arizalar";
 import DashboardTemplateWrapper from "./DashboardTemplateWrapper";
 import data from "../../page/Data/data";
+import { useState } from "react";
 
 export default function DashboardTemplate({ children }) {
+  const menuData = [
+    "/arizalar",
+    "/arizalar/yetkazilgan",
+    "/arizalar/statistika",
+    "/arizalar/qoshish",
+  ];
+
+  const [display, setDisplay] = useState(true);
+
   return (
     <DashboardTemplateWrapper>
-      <aside className="m-2">
+      <aside className={`${display ? "d-none" : "d-block"}`}>
         <img src={Express24} alt="" />
+
         <ul>
-          {data.map((item, index) => {
+          {data.map((value, index) => {
+            const item = menuData[index];
             return (
               <li>
-                <Link className="link" to={"/arizalar"}>
+                <Link className="link" to={`${item}`}>
                   <span className="first">
-                    <img src={item.img} alt="" />
+                    <img src={value.img} alt="" />
                   </span>
                   <span className="second">
-                    <h4>{item.title}</h4>
-                    <h5>{item.text}</h5>
+                    <h4>{value.title}</h4>
+                    <h5>{value.text}</h5>
                   </span>
                 </Link>
               </li>
@@ -32,7 +43,12 @@ export default function DashboardTemplate({ children }) {
       <div className="rightside">
         <header className="shadow m-1 p-3">
           <div className="menuIcon">
-            <Link className="listIcon">
+            <Link
+              className="listIcon"
+              onClick={() => {
+                setDisplay(!display);
+              }}
+            >
               <i class="bi bi-list"></i>
             </Link>
           </div>
