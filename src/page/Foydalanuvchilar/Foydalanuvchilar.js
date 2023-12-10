@@ -39,6 +39,11 @@ export default function Foydalanuvchilar() {
           })}
         </tbody>
       </table>
+
+      <div className="overall d-flex justify-content-between">
+        <h3>Jami:</h3>
+        <h3>4 ta akkaunt</h3>
+      </div>
     </DashboardTemplate>
   );
 }
