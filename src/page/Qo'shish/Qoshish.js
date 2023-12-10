@@ -10,6 +10,22 @@ const BtnGroup = styled.div`
   padding: 10px;
   flex-direction: row;
   gap: 10px;
+  padding-bottom: 50px;
+
+  .btn {
+    /* border: 1px solid red; */
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 4px 16px;
+    box-shadow: 0px 2px 3px 3px #c9c9c9;
+    transition: 0.5s;
+    border-radius: 10px;
+    &:hover {
+      background-color: #ffec00;
+    }
+  }
 `;
 
 export default function Qoshish() {
@@ -22,14 +38,14 @@ export default function Qoshish() {
 
       <BtnGroup>
         <button
-          className="btn btn-warning fw-bold pe-4"
+          className="btn one"
           onClick={() => {
             setState(!state);
           }}
         >
           Kategoriya
         </button>
-        <button className="btn btn-warning fw-bold pe-4">Taom</button>
+        <button className="btn second">Taom</button>
       </BtnGroup>
       {state ? <Kategoriya /> : ""}
     </DashboardTemplate>

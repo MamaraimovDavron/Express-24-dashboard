@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
 import { Link } from "react-router-dom";
-import data from "../Arizalar/data";
+import data from "./data";
 
 const dataThead = [
   "#",

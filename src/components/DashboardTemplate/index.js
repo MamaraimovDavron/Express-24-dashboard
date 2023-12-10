@@ -11,6 +11,7 @@ export default function DashboardTemplate({ children }) {
     "/arizalar/yetkazilgan",
     "/arizalar/statistika",
     "/arizalar/qoshish",
+    "/arizalar/foydalanuvchilar",
   ];
 
   const [display, setDisplay] = useState(true);
