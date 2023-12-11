@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
 import data from "./data";
+import EditCard from "./EditCard";
 
 export default function Foydalanuvchilar() {
+  const [edit, setEdit] = useState(false);
+
   return (
     <DashboardTemplate>
       <h2>Foydalanuvchilar</h2>
       <p className="text-warning">Rollarni biriktirishingiz mumkin</p>
 
+      {edit ? <EditCard /> : ""}
       <table className="table table-hover">
         <thead>
           <tr>
@@ -27,10 +31,15 @@ export default function Foydalanuvchilar() {
                 <td>{item.raqam}</td>
                 <td>{item.rol}</td>
                 <td>
-                  <button className="btn btn-primary me-2">
+                  <button
+                    className="btn btn-primary me-2"
+                    onClick={() => {
+                      setEdit(!edit);
+                    }}
+                  >
                     <i class="bi bi-pen-fill"></i>
                   </button>
-                  <button className="btn btn-danger">
+                  <button className="btn btn-danger" onClick={(index) => {}}>
                     <i class="bi bi-trash3-fill"></i>
                   </button>
                 </td>
