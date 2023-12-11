@@ -15,6 +15,7 @@ export default function DashboardTemplate({ children }) {
   ];
 
   const [display, setDisplay] = useState(true);
+  const [active, setActive] = useState(true);
 
   return (
     <DashboardTemplateWrapper>
@@ -25,8 +26,8 @@ export default function DashboardTemplate({ children }) {
           {data.map((value, index) => {
             const item = menuData[index];
             return (
-              <li>
-                <Link className="link" to={`${item}`}>
+              <li key={index} className={`${active ? "bg-warning" : ""}`}>
+                <Link className="link " to={`${item}`}>
                   <span className="first">
                     <img src={value.img} alt="" />
                   </span>
@@ -48,6 +49,7 @@ export default function DashboardTemplate({ children }) {
               className="listIcon"
               onClick={() => {
                 setDisplay(!display);
+                setActive(!active);
               }}
             >
               <i class="bi bi-list"></i>

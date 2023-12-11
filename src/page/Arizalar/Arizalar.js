@@ -31,7 +31,7 @@ export default function Arizalar() {
         <tbody>
           {data.map((item, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item.ism}</td>
                 <td>{item.taom}</td>

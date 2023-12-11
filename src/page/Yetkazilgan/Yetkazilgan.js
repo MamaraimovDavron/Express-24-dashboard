@@ -23,15 +23,15 @@ export default function Yetkazilgan() {
       <table className="table table-hover">
         <thead>
           <tr>
-            {dataThead.map((item) => {
-              return <th>{item}</th>;
+            {dataThead.map((item, index) => {
+              return <th key={index}>{item}</th>;
             })}
           </tr>
         </thead>
         <tbody>
           {data.map((item, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item.ism}</td>
                 <td>{item.taom}</td>

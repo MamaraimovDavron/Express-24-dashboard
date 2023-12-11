@@ -39,17 +39,11 @@ const Category = styled.div`
 `;
 
 export default function Kategoriya() {
-  const inputValue = document.querySelector("input");
+  // const inputValue = document.querySelector("input");
   return (
     <Category>
       <input type="text" placeholder="Kategoriya nomi" />
-      <button
-        onClick={() => {
-          console.log(inputValue.value);
-        }}
-      >
-        Qo`shish
-      </button>
+      <button>Qo`shish</button>
     </Category>
   );
 }
