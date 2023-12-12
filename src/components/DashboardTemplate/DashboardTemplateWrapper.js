@@ -24,22 +24,17 @@ const DashboardTemplateWrapper = styled.section`
       flex-direction: column;
       gap: 10px;
 
-      li {
-        /* width: 100%; */
+      .active {
         border-radius: 10px;
 
         list-style-type: none;
         display: flex;
         /* border: 1px solid yellow; */
         transition: 0.5s;
-        &:hover {
-          background-color: rgba(255, 220, 3, 0.65);
-        }
-
+        background-color: #fce205;
+        width: 100%;
         .link {
-          /* border: 1px solid; */
           display: flex;
-          /* width: 100%; */
           flex-direction: row;
           align-items: center;
           gap: 15px;
@@ -56,21 +51,66 @@ const DashboardTemplateWrapper = styled.section`
               font-weight: 600;
               font-size: 16px;
               font-style: normal;
-              /* font-weight: 500; */
-              line-height: 24px; /* 150% */
+              line-height: 24px;
               letter-spacing: 0.44px;
-              /* color: black; */
             }
 
             h5 {
               color: var(--gray-80, #5e6366);
-              /* 12 sp • Caption */
               font-family: "Trebuchet MS", "Lucida Sans Unicode",
                 "Lucida Grande", "Lucida Sans", Arial, sans-serif;
               font-size: 12px;
               font-style: normal;
               font-weight: 500;
-              line-height: 16px; /* 133.333% */
+              line-height: 16px;
+              letter-spacing: 0.4px;
+            }
+          }
+        }
+      }
+      li {
+        /* width: 100%; */
+        border-radius: 10px;
+
+        list-style-type: none;
+        display: flex;
+        /* border: 1px solid yellow; */
+        transition: 0.5s;
+
+        &:hover {
+          background-color: rgba(255, 220, 3, 0.65);
+        }
+
+        .link {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          padding: 10px 30px;
+
+          .first {
+          }
+          .second {
+            h4 {
+              color: var(--Dark-Color, rgba(0, 0, 0, 0.87));
+              font-family: "Trebuchet MS", "Lucida Sans Unicode",
+                "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+              font-weight: 600;
+              font-size: 16px;
+              font-style: normal;
+              line-height: 24px;
+              letter-spacing: 0.44px;
+            }
+
+            h5 {
+              color: var(--gray-80, #5e6366);
+              font-family: "Trebuchet MS", "Lucida Sans Unicode",
+                "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 16px;
               letter-spacing: 0.4px;
             }
           }
@@ -95,14 +135,8 @@ const DashboardTemplateWrapper = styled.section`
       padding: 0 20px;
 
       .menuIcon {
-        /* border: 1px solid; */
-        /* padding: 10px; */
-
         .listIcon {
-          /* padding: 10px; */
           i {
-            /* padding: 10px; */
-            /* border: 1px solid; */
             color: black;
             font-size: 30px;
             font-weight: bold;
@@ -112,10 +146,26 @@ const DashboardTemplateWrapper = styled.section`
 
       .userIcon {
         display: flex;
-        /* border: 1px solid red; */
         flex-direction: row;
-        gap: 10px;
+        gap: 15px;
         align-items: center;
+        .logout {
+          border: none;
+          outline: none;
+          font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+            "Lucida Sans", Arial, sans-serif;
+          font-weight: 600;
+          background-color: white;
+          border: 1px solid #fce205;
+          color: #fce205;
+          padding: 8px 16px;
+          border-radius: 10px;
+          transition: 0.5s ease-in-out;
+          &:hover {
+            color: #fff;
+            background-color: #fce205;
+          }
+        }
 
         .user {
           font-size: 40px;

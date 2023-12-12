@@ -45,7 +45,7 @@ export default function Kirish() {
       <h2>Express 24 ga xush kelibsiz!</h2>
       <button
         onClick={() => {
-          navigate("/");
+          navigate("/dashboard");
         }}
       >
         Kirish

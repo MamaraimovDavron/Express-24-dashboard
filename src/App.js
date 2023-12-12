@@ -13,8 +13,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<DashboardTemplate />}></Route>
-        <Route path="/kirish" element={<Kirish />}></Route>
+        <Route path="/" element={<Kirish />}></Route>
+        <Route path="/dashboard" element={<DashboardTemplate />}></Route>
         <Route path="/arizalar" element={<Arizalar />}></Route>
         <Route path="/arizalar/yetkazilgan" element={<Yetkazilgan />}></Route>
         <Route path="/arizalar/statistika" element={<Statistika />}></Route>

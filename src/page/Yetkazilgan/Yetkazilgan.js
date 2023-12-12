@@ -1,6 +1,6 @@
 import React from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import data from "./data";
 
 const dataThead = [
@@ -17,7 +17,7 @@ const dataThead = [
 export default function Yetkazilgan() {
   return (
     <DashboardTemplate>
-      <Link to={"/"}></Link>
+      {/* <Link to={"/"}></Link> */}
       <h1>Yetkazilgan</h1>
       <p>Yetib kelgan arizalarni kuzatshingiz mumkin</p>
       <table className="table table-hover">

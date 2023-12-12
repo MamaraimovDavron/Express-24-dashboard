@@ -4,8 +4,11 @@ import Express24 from "../../img/image 15 (1).png";
 import DashboardTemplateWrapper from "./DashboardTemplateWrapper";
 import data from "../../page/Data/data";
 import { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export default function DashboardTemplate({ children }) {
+  const navigate = useNavigate();
+
   const menuData = [
     "/arizalar",
     "/arizalar/yetkazilgan",
@@ -15,19 +18,26 @@ export default function DashboardTemplate({ children }) {
   ];
 
   const [display, setDisplay] = useState(true);
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
 
   return (
     <DashboardTemplateWrapper>
-      <aside className={`${display ? "d-none" : "d-block"}`}>
+      {/* <aside className={`${display ? "d-none" : "d-block"}`}> */}
+      <aside>
         <img src={Express24} alt="" />
 
         <ul>
           {data.map((value, index) => {
             const item = menuData[index];
             return (
-              <li key={index} className={`${active ? "bg-warning" : ""}`}>
-                <Link className="link " to={`${item}`}>
+              <li
+                key={index}
+                className={`${active} ? "" : "active"`}
+                onClick={() => {
+                  setActive(!active);
+                }}
+              >
+                <NavLink className="link " to={`${item}`}>
                   <span className="first">
                     <img src={value.img} alt="" />
                   </span>
@@ -35,7 +45,7 @@ export default function DashboardTemplate({ children }) {
                     <h4>{value.title}</h4>
                     <h5>{value.text}</h5>
                   </span>
-                </Link>
+                </NavLink>
               </li>
             );
           })}
@@ -49,13 +59,20 @@ export default function DashboardTemplate({ children }) {
               className="listIcon"
               onClick={() => {
                 setDisplay(!display);
-                setActive(!active);
               }}
             >
               <i class="bi bi-list"></i>
             </Link>
           </div>
           <div className="userIcon">
+            <button
+              className="logout"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
             <Link className="user">
               <i class="bi bi-person-circle"></i>
             </Link>
