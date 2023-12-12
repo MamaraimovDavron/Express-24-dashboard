@@ -7,12 +7,14 @@ import Yetkazilgan from "./page/Yetkazilgan/Yetkazilgan";
 import Statistika from "./page/Statistika/Statistika";
 import Qoshish from "./page/Qo'shish/Qoshish";
 import Foydalanuvchilar from "./page/Foydalanuvchilar/Foydalanuvchilar";
+import Kirish from "./page/Kirish/Kirish";
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<DashboardTemplate />}></Route>
+        <Route path="/kirish" element={<Kirish />}></Route>
         <Route path="/arizalar" element={<Arizalar />}></Route>
         <Route path="/arizalar/yetkazilgan" element={<Yetkazilgan />}></Route>
         <Route path="/arizalar/statistika" element={<Statistika />}></Route>
