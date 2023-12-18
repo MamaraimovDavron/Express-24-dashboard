@@ -22,8 +22,7 @@ export default function DashboardTemplate({ children }) {
 
   return (
     <DashboardTemplateWrapper>
-      {/* <aside className={`${display ? "d-none" : "d-block"}`}> */}
-      <aside>
+      <aside className={`${display ? "d-none" : "d-block"}`}>
         <img src={Express24} alt="" />
 
         <ul>

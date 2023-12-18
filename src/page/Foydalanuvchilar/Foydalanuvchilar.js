@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
 import data1 from "./data";
 import EditCard from "./EditCard";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Foydalanuvchilar() {
-  const [edit, setEdit] = useState(false);
   const Data = data1;
+
+  const dispatch = useDispatch();
 
   const [data, setRows] = useState(Data);
 
-  // const columnsArray = ["ism", "raqam", "rol"];
+  const edit = useSelector((state) => state.edit);
+  const setEdit = () => {
+    dispatch({ type: "EDIT" });
+  };
 
-  // const handleAddRow = () => {
-  //   const item = {};
-  //   setRows([...rows, item]);
-  // };
+  // const [edit, setEdit] = useState(false);
+
+  // const data = useSelector((state) => state.data);
+  // const setRows = () => {};
 
   const remove = (index) => {
     const tempRows = [...data];
@@ -48,10 +53,19 @@ export default function Foydalanuvchilar() {
                 <td>{item.raqam}</td>
                 <td>{item.rol}</td>
                 <td>
-                  <button
+                  {/* <button
                     className="btn btn-primary me-2"
                     onClick={() => {
                       setEdit(!edit);
+                    }}
+                  >
+                    <i class="bi bi-pen-fill"></i>
+                  </button> */}
+
+                  <button
+                    className="btn btn-primary me-2"
+                    onClick={() => {
+                      setEdit();
                     }}
                   >
                     <i class="bi bi-pen-fill"></i>

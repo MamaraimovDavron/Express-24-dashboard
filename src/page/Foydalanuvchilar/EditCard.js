@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
 const Edit = styled.div`
   width: 600px;
@@ -48,7 +49,12 @@ const Edit = styled.div`
 `;
 
 export default function EditCard() {
-  const [display, setDisplay] = useState(1);
+  // const [display, setDisplay] = useState(1);
+  const display = useSelector((state) => state.display);
+  const dispatch = useDispatch();
+  const setDisplay = () => {
+    dispatch({ type: "SET_DISPLAY" });
+  };
 
   return (
     <Edit style={{ opacity: display }}>
@@ -62,7 +68,7 @@ export default function EditCard() {
         <button
           className="btn btn-danger"
           onClick={() => {
-            setDisplay(0);
+            setDisplay(display);
           }}
         >
           Bekor qilish
@@ -70,7 +76,7 @@ export default function EditCard() {
         <button
           className="btn btn-warning"
           onClick={() => {
-            setDisplay(0);
+            setDisplay(display);
           }}
         >
           Saqlash

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const DashboardTemplateWrapper = styled.section`
-  /* border: 1px solid; */
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -29,7 +28,6 @@ const DashboardTemplateWrapper = styled.section`
 
         list-style-type: none;
         display: flex;
-        /* border: 1px solid yellow; */
         transition: 0.5s;
         background-color: #fce205;
         width: 100%;
@@ -42,6 +40,9 @@ const DashboardTemplateWrapper = styled.section`
           padding: 10px 30px;
 
           .first {
+            img {
+              border-radius: 50%;
+            }
           }
           .second {
             h4 {
@@ -68,6 +69,7 @@ const DashboardTemplateWrapper = styled.section`
           }
         }
       }
+
       li {
         /* width: 100%; */
         border-radius: 10px;
@@ -90,6 +92,9 @@ const DashboardTemplateWrapper = styled.section`
           padding: 10px 30px;
 
           .first {
+            img {
+              border-radius: 50%;
+            }
           }
           .second {
             h4 {
