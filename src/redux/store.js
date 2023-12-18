@@ -6,6 +6,7 @@ const initialState = {
   edit: true,
   display: 1,
   addDisplay: false,
+  taom: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +30,12 @@ const reducer = (state = initialState, action) => {
         addDisplay: !state.addDisplay,
       };
 
+    case "ADD_MEAL": {
+      return {
+        ...state,
+        taom: !state.taom,
+      };
+    }
     case "SET_CATEGORY":
       return {
         ...state,

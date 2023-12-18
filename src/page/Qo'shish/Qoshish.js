@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
 import styled from "styled-components";
+import Taom from "./Taom";
 import { useSelector, useDispatch } from "react-redux";
 
 const BtnGroup = styled.div`
@@ -96,10 +97,15 @@ export default function Qoshish() {
   const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
   const addDisplay = useSelector((state) => state.addDisplay);
-
+  const taom = useSelector((state) => state.taom);
   // console.log(category.title);
+
   const setAddDisplay = () => {
     dispatch({ type: "ADD_CATEGORY" });
+  };
+
+  const addMeal = () => {
+    dispatch({ type: "ADD_MEAL" });
   };
 
   const setCategory = () => {
@@ -118,10 +124,14 @@ export default function Qoshish() {
           Kategoriya
         </button>
 
-        <button className="btn second">Taom</button>
+        <button className="btn second" onClick={addMeal}>
+          Taom
+        </button>
       </BtnGroup>
 
       {/* {state ? <Kategoriya /> : ""} */}
+
+      {taom ? <Taom /> : ""}
 
       {addDisplay ? (
         <Category>
