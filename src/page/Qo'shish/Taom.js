@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const MealBox = styled.div`
+  overflow-x: hidden;
   /* border: 1px solid red; */
   /* height: 40vh; */
-  height: 100%;
-  /* padding-top: 20px;
-  padding-bottom: 20px; */
+  /* height: 100%; */
+  padding-top: 30px;
+  /* padding-bottom: 20px;  */
   font-size: 20px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -90,25 +91,40 @@ const MealBox = styled.div`
       }
     }
   }
+
+  table {
+    tbody {
+      tr {
+        display: flex;
+        flex-direction: row;
+        /* align-items: center; */
+        justify-content: center;
+        td {
+          line-height: 70px;
+          width: 20%;
+          img {
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
 `;
 
 export default function Taom() {
   // const thead = ["#", "Rasm", "Taom nomi", "Ta`rif", "Narxi", "Kategoriya"];
-  const [val, setValue] = useState({});
 
-  // const dispatch = useDispatch();
+  const [data, setData] = useState("");
+
+  const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
+  const menu = useSelector((state) => state.menu);
+  // console.log(menu);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValue((prev) => {
-      console.log(value);
-      return { ...prev, [name]: String(value) };
-    });
-  };
-
-  const myFunction = () => {
-    return val;
+  const setMenu = () => {
+    if (data === "") return;
+    dispatch({ type: "SET_MENU", payload: data });
+    setData("");
   };
 
   return (
@@ -119,16 +135,21 @@ export default function Taom() {
           type="text"
           placeholder="Rasmga yo'l"
           id="imgUrl"
-          value={val.imgUrl || ""}
-          onChange={handleChange}
+          // value={menu.imgUrl || ""}
+
+          onChange={(e) => {
+            setData(e.target.value);
+          }}
         />
         <input
           name="mealTitle"
           type="text"
           placeholder="Taom nomi"
           id="mealTitle"
-          onChange={handleChange}
-          value={val.mealTitle || ""}
+          // value={data.mealTitle || ""}
+          onChange={(e) => {
+            setData(e.target.value);
+          }}
         />
       </div>
       <div className="middle">
@@ -138,31 +159,69 @@ export default function Taom() {
           rows="10"
           placeholder="Ta`rif"
           id="comment"
-          onChange={handleChange}
-          value={val.comment || ""}
+          // value={data.comment || ""}
+          onChange={(e) => {
+            setData(e.target.value);
+          }}
         ></textarea>
       </div>
       <div className="footer">
         <input
           name="price"
-          type="text"
+          type="number"
           placeholder="Narxi"
           id="price"
-          onChange={handleChange}
-          value={val.price || ""}
+          // value={data.price || ""}
+          onChange={(e) => {
+            setData(e.target.value);
+          }}
         />
-        <select name="select" id="select" value={val.select || ""}>
+        <select
+          name="select"
+          id="select"
+          // value={data.price || ""}
+          onChange={(e) => {
+            setData(e.target.select);
+          }}
+        >
           {category.map((item) => {
-            return (
-              <option id="option" onChange={handleChange}>
-                {item.title}
-              </option>
-            );
+            return <option id="option">{item.title}</option>;
           })}
         </select>
       </div>
-
-      <button onClick={myFunction}>Qo`shish</button>
+      {/* <ul>
+        <li>
+          {menu.map((item) => {
+            return (
+              <>
+                <img src={item.imgUrl} alt="" />
+                <h3>{item.mealTitle}</h3>
+                <h3>{item.comment}</h3>
+                <h3>{item.price}</h3>
+                <h3>{item.categoryTitle}</h3>
+              </>
+            );
+          })}
+        </li>
+      </ul> */}
+      <table className="table table-hover">
+        <tbody>
+          {menu.map((item) => {
+            return (
+              <tr>
+                <td>
+                  <img src={item.imgUrl} alt="" />
+                </td>
+                <td>{item.mealTitle}</td>
+                <td>{item.comment}</td>
+                <td>{item.price}</td>
+                <td>{item.categoryTitle}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <button onClick={setMenu}>Qo`shish</button>
     </MealBox>
   );
 }

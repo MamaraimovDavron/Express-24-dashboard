@@ -2,11 +2,20 @@ import { createStore } from "redux";
 // import data from "../page/Foydalanuvchilar/data";
 
 const initialState = {
-  category: [{ title: "Italian Pizza", completed: false }],
+  category: [{ title: "", completed: false }],
   edit: true,
   display: 1,
   addDisplay: false,
   taom: false,
+  menu: [
+    {
+      imgUrl: "https://4yourstyle.ru/wp-content/uploads/2020/05/20-4.jpg",
+      mealTitle: "Manti",
+      comment: "Ajoyib!",
+      price: 100,
+      categoryTitle: "Milliy taom",
+    },
+  ],
 };
 
 const reducer = (state = initialState, action) => {
@@ -41,6 +50,21 @@ const reducer = (state = initialState, action) => {
         category: [
           ...state.category,
           { title: action.payload, completed: false },
+        ],
+      };
+
+    case "SET_MENU":
+      return {
+        ...state,
+        menu: [
+          ...state.menu,
+          {
+            imgUrl: action.payload,
+            mealTitle: action.payload,
+            comment: action.payload,
+            price: action.payload,
+            categoryTitle: action.payload,
+          },
         ],
       };
     default:
