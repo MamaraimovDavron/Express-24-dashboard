@@ -11,7 +11,7 @@ const BtnGroup = styled.div`
   padding: 10px;
   flex-direction: row;
   gap: 10px;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
 
   .btn {
     /* border: 1px solid red; */
@@ -95,18 +95,18 @@ export default function Qoshish() {
   const [value, setValue] = useState("");
 
   const dispatch = useDispatch();
-  const category = useSelector((state) => state.category);
+  // const category = useSelector((state) => state.category);
   const addDisplay = useSelector((state) => state.addDisplay);
-  const taom = useSelector((state) => state.taom);
+  // const taom = useSelector((state) => state.taom);
   // console.log(category.title);
 
   const setAddDisplay = () => {
     dispatch({ type: "ADD_CATEGORY" });
   };
 
-  const addMeal = () => {
-    dispatch({ type: "ADD_MEAL" });
-  };
+  // const addMeal = () => {
+  //   dispatch({ type: "ADD_MEAL" });
+  // };
 
   const setCategory = () => {
     if (value.trim() === "") return;
@@ -135,8 +135,6 @@ export default function Qoshish() {
         </button>
       </BtnGroup>
 
-      {/* {state ? <Kategoriya /> : ""} */}
-
       {addDisplay === false ? (
         <Category>
           <input
@@ -147,7 +145,7 @@ export default function Qoshish() {
               setValue(e.target.value);
             }}
           />
-          <ul>
+          {/* <ul>
             {category.map((item) => {
               return (
                 <li>
@@ -155,37 +153,12 @@ export default function Qoshish() {
                 </li>
               );
             })}
-          </ul>
+          </ul> */}
           <button onClick={setCategory}>Qo`shish</button>
         </Category>
       ) : (
         <Taom />
       )}
-
-      {/* {addDisplay === false && taom === false ? (
-        <Category>
-          <input
-            type="text"
-            placeholder="Kategoriya nomi"
-            value={value}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-          />
-          <ul>
-            {category.map((item) => {
-              return (
-                <li>
-                  <a href="!#">{item.title}</a>
-                </li>
-              );
-            })}
-          </ul>
-          <button onClick={setCategory}>Qo`shish</button>
-        </Category>
-      ) : (
-        ""
-      )} */}
     </DashboardTemplate>
   );
 }
