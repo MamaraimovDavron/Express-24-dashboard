@@ -15,15 +15,14 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "EDIT":
       return {
-        ...state,
         edit: !state.edit,
       };
 
     case "SET_DISPLAY":
       return {
-        ...state,
         display: (state.display = 0),
       };
+
     case "ADD_CATEGORY":
       return {
         ...state,

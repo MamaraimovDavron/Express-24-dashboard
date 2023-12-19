@@ -12,6 +12,7 @@ export default function Foydalanuvchilar() {
   const [data, setRows] = useState(Data);
 
   const edit = useSelector((state) => state.edit);
+
   const setEdit = () => {
     dispatch({ type: "EDIT" });
   };
@@ -62,12 +63,7 @@ export default function Foydalanuvchilar() {
                     <i class="bi bi-pen-fill"></i>
                   </button> */}
 
-                  <button
-                    className="btn btn-primary me-2"
-                    onClick={() => {
-                      setEdit();
-                    }}
-                  >
+                  <button className="btn btn-primary me-2" onClick={setEdit}>
                     <i class="bi bi-pen-fill"></i>
                   </button>
                   <button className="btn btn-danger" onClick={remove}>

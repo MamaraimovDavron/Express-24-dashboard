@@ -120,20 +120,49 @@ export default function Qoshish() {
       <p>Yangi kategoriya/taom qo'shish</p>
 
       <BtnGroup>
-        <button className="btn one" onClick={setAddDisplay}>
+        <button
+          className={`btn one ${!addDisplay ? "disabled" : ""}`}
+          onClick={setAddDisplay}
+        >
           Kategoriya
         </button>
 
-        <button className="btn second" onClick={addMeal}>
+        <button
+          className={`btn second ${addDisplay ? "disabled" : ""}`}
+          onClick={setAddDisplay}
+        >
           Taom
         </button>
       </BtnGroup>
 
       {/* {state ? <Kategoriya /> : ""} */}
 
-      {taom ? <Taom /> : ""}
+      {addDisplay === false ? (
+        <Category>
+          <input
+            type="text"
+            placeholder="Kategoriya nomi"
+            value={value}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+          />
+          <ul>
+            {category.map((item) => {
+              return (
+                <li>
+                  <a href="!#">{item.title}</a>
+                </li>
+              );
+            })}
+          </ul>
+          <button onClick={setCategory}>Qo`shish</button>
+        </Category>
+      ) : (
+        <Taom />
+      )}
 
-      {addDisplay ? (
+      {/* {addDisplay === false && taom === false ? (
         <Category>
           <input
             type="text"
@@ -156,7 +185,7 @@ export default function Qoshish() {
         </Category>
       ) : (
         ""
-      )}
+      )} */}
     </DashboardTemplate>
   );
 }
