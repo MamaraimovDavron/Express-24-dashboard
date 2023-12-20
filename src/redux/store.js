@@ -15,11 +15,19 @@ const initialState = {
       price: 100,
       categoryTitle: "Milliy taom",
     },
+    {
+      imgUrl:
+        "https://ligabiznesa.ru/wp-content/uploads/2020/01/2.-gotovye-sushi.jpg",
+      mealTitle: "Sushu",
+      comment: "Ajoyib!",
+      price: 100,
+      categoryTitle: "Yapona Mama",
+    },
   ],
 };
 
 const reducer = (state = initialState, action) => {
-  console.log(state);
+  // console.log(state);
 
   switch (action.type) {
     case "EDIT":

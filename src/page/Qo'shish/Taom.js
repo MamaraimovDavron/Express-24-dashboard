@@ -115,17 +115,30 @@ export default function Taom() {
   // const thead = ["#", "Rasm", "Taom nomi", "Ta`rif", "Narxi", "Kategoriya"];
 
   const [data, setData] = useState("");
+  // console.log(setData());
 
   const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
   const menu = useSelector((state) => state.menu);
-  // console.log(menu);
 
   const setMenu = () => {
-    if (data === "") return;
+    if (menu === "") return;
     dispatch({ type: "SET_MENU", payload: data });
     setData("");
+    console.log(data);
   };
+
+  // const handleChange = (e) => {
+  //   // const name = e.target.name;
+  //   // const value = e.target.value;
+  //   const { name, value } = e.target;
+  //   setData((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       [name]: value,
+  //     };
+  //   });
+  // };
 
   return (
     <MealBox>
@@ -135,8 +148,7 @@ export default function Taom() {
           type="text"
           placeholder="Rasmga yo'l"
           id="imgUrl"
-          // value={menu.imgUrl || ""}
-
+          value={data.imgUrl && ""}
           onChange={(e) => {
             setData(e.target.value);
           }}
@@ -146,7 +158,7 @@ export default function Taom() {
           type="text"
           placeholder="Taom nomi"
           id="mealTitle"
-          // value={data.mealTitle || ""}
+          value={data.mealTitle && ""}
           onChange={(e) => {
             setData(e.target.value);
           }}
@@ -159,7 +171,7 @@ export default function Taom() {
           rows="10"
           placeholder="Ta`rif"
           id="comment"
-          // value={data.comment || ""}
+          value={data.comment && ""}
           onChange={(e) => {
             setData(e.target.value);
           }}
@@ -168,10 +180,10 @@ export default function Taom() {
       <div className="footer">
         <input
           name="price"
-          type="number"
+          type="text"
           placeholder="Narxi"
           id="price"
-          // value={data.price || ""}
+          value={data.price && ""}
           onChange={(e) => {
             setData(e.target.value);
           }}
@@ -179,36 +191,31 @@ export default function Taom() {
         <select
           name="select"
           id="select"
-          // value={data.price || ""}
-          onChange={(e) => {
-            setData(e.target.select);
-          }}
+          value={data.select && ""}
+          // onChange={handleChange}
         >
-          {category.map((item) => {
-            return <option id="option">{item.title}</option>;
+          {category.map((item, index) => {
+            return (
+              <option
+                key={index}
+                name="option"
+                id="option"
+                // value={data.option ?? ""}
+                // onChange={handleChange}
+              >
+                {item.title}
+              </option>
+            );
           })}
         </select>
       </div>
-      {/* <ul>
-        <li>
-          {menu.map((item) => {
-            return (
-              <>
-                <img src={item.imgUrl} alt="" />
-                <h3>{item.mealTitle}</h3>
-                <h3>{item.comment}</h3>
-                <h3>{item.price}</h3>
-                <h3>{item.categoryTitle}</h3>
-              </>
-            );
-          })}
-        </li>
-      </ul> */}
+
       <table className="table table-hover">
         <tbody>
-          {menu.map((item) => {
+          {menu.map((item, index) => {
             return (
-              <tr>
+              <tr key={index}>
+                <td>{index + 1}</td>
                 <td>
                   <img src={item.imgUrl} alt="" />
                 </td>
