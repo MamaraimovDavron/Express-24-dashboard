@@ -114,32 +114,38 @@ const MealBox = styled.div`
 export default function Taom() {
   // const thead = ["#", "Rasm", "Taom nomi", "Ta`rif", "Narxi", "Kategoriya"];
 
-  const [data, setData] = useState("");
+  const [data, setData] = useState([
+    {
+      imgUrl: "",
+      mealTitle: "",
+      comment: "",
+      price: "",
+    },
+  ]);
   // console.log(setData());
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
-  const menu = useSelector((state) => state.menu);
+  // const menu = useSelector((state) => state.menu);
+  // console.log("menu", menu);
 
-  const setMenu = () => {
-    if (menu === "") return;
-    dispatch({ type: "SET_MENU", payload: data });
-    setData("");
-    console.log(data);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // console.log(name, value);
+    setData((prev) => {
+      return { ...prev, [name]: value };
+    });
   };
 
-  // const handleChange = (e) => {
-  //   // const name = e.target.name;
-  //   // const value = e.target.value;
-  //   const { name, value } = e.target;
-  //   setData((prevState) => {
-  //     return {
-  //       ...prevState,
-  //       [name]: value,
-  //     };
-  //   });
+  // const setMenu = (e) => {
+  //   if (data === "") return;
+  //   dispatch({ type: "SET_MENU", payload: data });
+  //   setData("");
+  //   // console.log(data);
   // };
-
+  const handleSubmit = () => {
+    console.log(typeof data);
+  };
   return (
     <MealBox>
       <div className="topBox">
@@ -148,20 +154,14 @@ export default function Taom() {
           type="text"
           placeholder="Rasmga yo'l"
           id="imgUrl"
-          value={data.imgUrl && ""}
-          onChange={(e) => {
-            setData(e.target.value);
-          }}
+          onChange={handleChange}
         />
         <input
           name="mealTitle"
           type="text"
           placeholder="Taom nomi"
           id="mealTitle"
-          value={data.mealTitle && ""}
-          onChange={(e) => {
-            setData(e.target.value);
-          }}
+          onChange={handleChange}
         />
       </div>
       <div className="middle">
@@ -171,10 +171,7 @@ export default function Taom() {
           rows="10"
           placeholder="Ta`rif"
           id="comment"
-          value={data.comment && ""}
-          onChange={(e) => {
-            setData(e.target.value);
-          }}
+          onChange={handleChange}
         ></textarea>
       </div>
       <div className="footer">
@@ -183,17 +180,9 @@ export default function Taom() {
           type="text"
           placeholder="Narxi"
           id="price"
-          value={data.price && ""}
-          onChange={(e) => {
-            setData(e.target.value);
-          }}
+          onChange={handleChange}
         />
-        <select
-          name="select"
-          id="select"
-          value={data.select && ""}
-          // onChange={handleChange}
-        >
+        <select name="select" id="select">
           {category.map((item, index) => {
             return (
               <option
@@ -211,24 +200,9 @@ export default function Taom() {
       </div>
 
       <table className="table table-hover">
-        <tbody>
-          {menu.map((item, index) => {
-            return (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>
-                  <img src={item.imgUrl} alt="" />
-                </td>
-                <td>{item.mealTitle}</td>
-                <td>{item.comment}</td>
-                <td>{item.price}</td>
-                <td>{item.categoryTitle}</td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <tbody></tbody>
       </table>
-      <button onClick={setMenu}>Qo`shish</button>
+      <button onClick={handleSubmit}>Qo`shish</button>
     </MealBox>
   );
 }

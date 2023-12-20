@@ -2,28 +2,26 @@ import { createStore } from "redux";
 // import data from "../page/Foydalanuvchilar/data";
 
 const initialState = {
-  category: [{ title: "", completed: false }],
+  category: [{ title: "Pizza", completed: false }],
   edit: true,
   display: 1,
   addDisplay: false,
   taom: false,
-  menu: [
-    {
-      imgUrl: "https://4yourstyle.ru/wp-content/uploads/2020/05/20-4.jpg",
-      mealTitle: "Manti",
-      comment: "Ajoyib!",
-      price: 100,
-      categoryTitle: "Milliy taom",
-    },
-    {
-      imgUrl:
-        "https://ligabiznesa.ru/wp-content/uploads/2020/01/2.-gotovye-sushi.jpg",
-      mealTitle: "Sushu",
-      comment: "Ajoyib!",
-      price: 100,
-      categoryTitle: "Yapona Mama",
-    },
-  ],
+  // menu: [
+  //   {
+  //     imgUrl: "https://4yourstyle.ru/wp-content/uploads/2020/05/20-4.jpg",
+  //     mealTitle: "Manti",
+  //     comment: "Ajoyib!",
+  //     price: 100,
+  //   },
+  //   {
+  //     imgUrl:
+  //       "https://ligabiznesa.ru/wp-content/uploads/2020/01/2.-gotovye-sushi.jpg",
+  //     mealTitle: "Sushu",
+  //     comment: "Ajoyib!",
+  //     price: 100,
+  //   },
+  // ],
 };
 
 const reducer = (state = initialState, action) => {
@@ -61,7 +59,7 @@ const reducer = (state = initialState, action) => {
         ],
       };
 
-    case "SET_MENU":
+      // case "SET_MENU":
       return {
         ...state,
         menu: [
@@ -71,7 +69,6 @@ const reducer = (state = initialState, action) => {
             mealTitle: action.payload,
             comment: action.payload,
             price: action.payload,
-            categoryTitle: action.payload,
           },
         ],
       };

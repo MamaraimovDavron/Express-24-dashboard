@@ -145,6 +145,7 @@ export default function Qoshish() {
               setValue(e.target.value);
             }}
           />
+
           {/* <ul>
             {category.map((item) => {
               return (
