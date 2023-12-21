@@ -146,15 +146,6 @@ export default function Qoshish() {
             }}
           />
 
-          {/* <ul>
-            {category.map((item) => {
-              return (
-                <li>
-                  <a href="!#">{item.title}</a>
-                </li>
-              );
-            })}
-          </ul> */}
           <button onClick={setCategory}>Qo`shish</button>
         </Category>
       ) : (

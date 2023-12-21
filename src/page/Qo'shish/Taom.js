@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const MealBox = styled.div`
   overflow-x: hidden;
   /* border: 1px solid red; */
   /* height: 40vh; */
-  /* height: 100%; */
+  height: 100%;
   padding-top: 30px;
-  /* padding-bottom: 20px;  */
+  padding-bottom: 20px;
   font-size: 20px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -112,40 +112,29 @@ const MealBox = styled.div`
 `;
 
 export default function Taom() {
-  // const thead = ["#", "Rasm", "Taom nomi", "Ta`rif", "Narxi", "Kategoriya"];
+  const [array, setArray] = useState([]);
 
-  const [data, setData] = useState([
-    {
-      imgUrl: "",
-      mealTitle: "",
-      comment: "",
-      price: "",
-    },
-  ]);
-  // console.log(setData());
+  const [data, setData] = useState({
+    imgUrl: "",
+    mealTitle: "",
+    comment: "",
+    price: "",
+  });
 
-  // const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
-  // const menu = useSelector((state) => state.menu);
-  // console.log("menu", menu);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    // console.log(name, value);
-    setData((prev) => {
-      return { ...prev, [name]: value };
-    });
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  // const setMenu = (e) => {
-  //   if (data === "") return;
-  //   dispatch({ type: "SET_MENU", payload: data });
-  //   setData("");
-  //   // console.log(data);
-  // };
+  let { imgUrl, mealTitle, comment, price } = data;
+
   const handleSubmit = () => {
-    console.log(typeof data);
+    setArray([...array, { imgUrl, mealTitle, comment, price }]);
+
+    setData({ imgUrl: "", mealTitle: "", comment: "", price: "" });
   };
+
   return (
     <MealBox>
       <div className="topBox">
@@ -154,6 +143,7 @@ export default function Taom() {
           type="text"
           placeholder="Rasmga yo'l"
           id="imgUrl"
+          value={data.imgUrl}
           onChange={handleChange}
         />
         <input
@@ -161,9 +151,11 @@ export default function Taom() {
           type="text"
           placeholder="Taom nomi"
           id="mealTitle"
+          value={data.mealTitle}
           onChange={handleChange}
         />
       </div>
+
       <div className="middle">
         <textarea
           name="comment"
@@ -171,15 +163,18 @@ export default function Taom() {
           rows="10"
           placeholder="Ta`rif"
           id="comment"
+          value={data.comment}
           onChange={handleChange}
         ></textarea>
       </div>
+
       <div className="footer">
         <input
           name="price"
           type="text"
           placeholder="Narxi"
           id="price"
+          value={data.price}
           onChange={handleChange}
         />
         <select name="select" id="select">
@@ -200,7 +195,20 @@ export default function Taom() {
       </div>
 
       <table className="table table-hover">
-        <tbody></tbody>
+        <tbody>
+          {array.map((item) => {
+            return (
+              <tr>
+                <td>
+                  <img src={item.imgUrl} alt="" />
+                </td>
+                <td>{item.mealTitle}</td>
+                <td>{item.comment}</td>
+                <td>{item.price}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <button onClick={handleSubmit}>Qo`shish</button>
     </MealBox>
