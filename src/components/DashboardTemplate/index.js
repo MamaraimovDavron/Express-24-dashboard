@@ -22,7 +22,7 @@ export default function DashboardTemplate({ children }) {
 
   return (
     <DashboardTemplateWrapper>
-      <aside className={`${display ? "d-none" : "d-block"}`}>
+      <aside className={`${display ? "d-none" : "d-block"} shadow`}>
         <img src={Express24} alt="" />
 
         <ul>
@@ -78,7 +78,7 @@ export default function DashboardTemplate({ children }) {
             <h5>Davron</h5>
           </div>
         </header>
-        <main className="shadow m-1 p-3">{children}</main>
+        <main className="m-1 p-3">{children}</main>
       </div>
     </DashboardTemplateWrapper>
   );

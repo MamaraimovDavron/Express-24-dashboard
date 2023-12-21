@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 const DashboardTemplateWrapper = styled.section`
-  /* height: 100%; */
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   aside {
     /* border: 1px solid red; */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     width: 400px;
@@ -187,7 +188,7 @@ const DashboardTemplateWrapper = styled.section`
     }
 
     main {
-      height: calc(100% - 8vh);
+      /* height: calc(100% - 8vh); */
       color: black;
       /* box-shadow: 0px 0px 2px 0px gray; */
     }
