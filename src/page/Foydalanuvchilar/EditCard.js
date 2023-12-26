@@ -52,12 +52,13 @@ export default function EditCard() {
   // const [display, setDisplay] = useState(1);
   const display = useSelector((state) => state.display);
   const dispatch = useDispatch();
+
   const setDisplay = () => {
     dispatch({ type: "SET_DISPLAY" });
   };
 
   return (
-    <Edit style={{ opacity: display }}>
+    <Edit style={{ opacity: display ? 1 : 0 }}>
       <h4>Foydalanuvchilar uchun rol tanlang</h4>
       <select name="rols" id="rol">
         <option value="admin">Admin</option>
@@ -68,7 +69,8 @@ export default function EditCard() {
         <button
           className="btn btn-danger"
           onClick={() => {
-            setDisplay(display);
+            setDisplay(!display);
+            console.log(display);
           }}
         >
           Bekor qilish
@@ -77,6 +79,7 @@ export default function EditCard() {
           className="btn btn-warning"
           onClick={() => {
             setDisplay(display);
+            console.log(display);
           }}
         >
           Saqlash

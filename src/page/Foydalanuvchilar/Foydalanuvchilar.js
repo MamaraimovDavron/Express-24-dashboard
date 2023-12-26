@@ -8,9 +8,7 @@ export default function Foydalanuvchilar() {
   const Data = data1;
 
   const dispatch = useDispatch();
-
   const [data, setRows] = useState(Data);
-
   const edit = useSelector((state) => state.edit);
 
   const setEdit = () => {
@@ -54,16 +52,13 @@ export default function Foydalanuvchilar() {
                 <td>{item.raqam}</td>
                 <td>{item.rol}</td>
                 <td>
-                  {/* <button
+                  <button
                     className="btn btn-primary me-2"
                     onClick={() => {
                       setEdit(!edit);
+                      console.log(edit);
                     }}
                   >
-                    <i class="bi bi-pen-fill"></i>
-                  </button> */}
-
-                  <button className="btn btn-primary me-2" onClick={setEdit}>
                     <i class="bi bi-pen-fill"></i>
                   </button>
                   <button className="btn btn-danger" onClick={remove}>

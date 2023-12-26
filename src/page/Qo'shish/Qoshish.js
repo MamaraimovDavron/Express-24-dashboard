@@ -99,6 +99,7 @@ export default function Qoshish() {
   const addDisplay = useSelector((state) => state.addDisplay);
   // const taom = useSelector((state) => state.taom);
   // console.log(category.title);
+  console.log("addDisplay", addDisplay);
 
   const setAddDisplay = () => {
     dispatch({ type: "ADD_CATEGORY" });
@@ -129,7 +130,9 @@ export default function Qoshish() {
 
         <button
           className={`btn second ${addDisplay ? "disabled" : ""}`}
-          onClick={setAddDisplay}
+          onClick={() => {
+            setAddDisplay();
+          }}
         >
           Taom
         </button>

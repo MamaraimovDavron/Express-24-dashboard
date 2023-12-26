@@ -6,7 +6,7 @@ import thunk from "redux-thunker";
 const initialState = {
   category: [{ title: "Pizza", completed: false }],
   edit: true,
-  display: 1,
+  display: true,
   addDisplay: false,
   taom: false,
   // menu: [
@@ -27,7 +27,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  // console.log(state);
+  console.log(state);
 
   switch (action.type) {
     case "EDIT":
@@ -38,7 +38,7 @@ const reducer = (state = initialState, action) => {
     case "SET_DISPLAY":
       return {
         ...state,
-        display: (state.display = 0),
+        display: !state.display,
       };
 
     case "ADD_CATEGORY":
