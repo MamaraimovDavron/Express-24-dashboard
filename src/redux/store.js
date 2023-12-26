@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import thunk from "redux-thunker";
 // import data from "../page/Foydalanuvchilar/data";
 
@@ -9,21 +9,53 @@ const initialState = {
   display: true,
   addDisplay: false,
   taom: false,
-  // menu: [
-  //   {
-  //     imgUrl: "https://4yourstyle.ru/wp-content/uploads/2020/05/20-4.jpg",
-  //     mealTitle: "Manti",
-  //     comment: "Ajoyib!",
-  //     price: 100,
-  //   },
-  //   {
-  //     imgUrl:
-  //       "https://ligabiznesa.ru/wp-content/uploads/2020/01/2.-gotovye-sushi.jpg",
-  //     mealTitle: "Sushu",
-  //     comment: "Ajoyib!",
-  //     price: 100,
-  //   },
-  // ],
+  data: [
+    {
+      ism: "Davron Mamarayimov",
+      taom: "Osh",
+      narxi: "20000",
+      soni: 2,
+      umumiy_narx: 40000,
+      telefon_raqam: "+998999374996",
+      izoh: "lorem ipsum",
+    },
+    {
+      ism: "Azim Nuriddinov",
+      taom: "Manti",
+      narxi: "10000",
+      soni: 12,
+      umumiy_narx: 120000,
+      telefon_raqam: "+998999379696",
+      izoh: "lorem ipsum",
+    },
+    {
+      ism: "Feruz Toshboyev",
+      taom: "Osh",
+      narxi: "20000",
+      soni: 2,
+      umumiy_narx: 40000,
+      telefon_raqam: "+998999372103",
+      izoh: "lorem ipsum",
+    },
+    {
+      ism: "Ahror Temirxo`jayev",
+      taom: "Dimlama",
+      narxi: "30000",
+      soni: 2,
+      umumiy_narx: 60000,
+      telefon_raqam: "+998999372663",
+      izoh: "lorem ipsum",
+    },
+    {
+      ism: "Alijon Abdujabbarov",
+      taom: "Shashlik",
+      narxi: "20000",
+      soni: 2,
+      umumiy_narx: 40000,
+      telefon_raqam: "+998999372206",
+      izoh: "lorem ipsum",
+    },
+  ],
 };
 
 const reducer = (state = initialState, action) => {
@@ -62,18 +94,14 @@ const reducer = (state = initialState, action) => {
         ],
       };
 
-      // case "SET_MENU":
+    case "REMOVE_TABLE":
       return {
         ...state,
-        menu: [
-          ...state.menu,
-          {
-            imgUrl: action.payload,
-            mealTitle: action.payload,
-            comment: action.payload,
-            price: action.payload,
-          },
-        ],
+      };
+
+    case "REMOVE_TABLE2":
+      return {
+        ...state,
       };
     default:
       return state;

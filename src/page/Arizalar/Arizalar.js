@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
 // import { Link } from "react-router-dom";
-import data from "./data";
+// import data from "./data";
+import { useSelector, useDispatch } from "react-redux";
 
 const dataThead = [
   "#",
@@ -15,11 +16,15 @@ const dataThead = [
 ];
 
 export default function Arizalar() {
-  const [rows, setRows] = useState(data);
+  // const [rows, setRows] = useState([]);
+  const data = useSelector((state) => state.data);
+  const dispatch = useDispatch();
+  const setData = dispatch({ type: "REMOVE_TABLE" });
+
   const remove = (index) => {
-    const tempRows = [...rows];
+    const tempRows = [...data];
     tempRows.splice(index, 1);
-    setRows(tempRows);
+    setData(tempRows);
   };
 
   return (
@@ -36,7 +41,7 @@ export default function Arizalar() {
           </tr>
         </thead>
         <tbody>
-          {rows.map((item, index) => {
+          {data.map((item, index) => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

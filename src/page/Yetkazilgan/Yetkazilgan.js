@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
 // import { Link } from "react-router-dom";
-import data from "./data";
+// import data from "./data";
+import { useSelector, useDispatch } from "react-redux";
 
 const dataThead = [
   "#",
@@ -15,13 +16,17 @@ const dataThead = [
 ];
 
 export default function Yetkazilgan() {
-  const [rows, setRows] = useState(data);
+  // const [rows, setRows] = useState(data);
+  const data1 = useSelector((state) => state.data);
+  const dispatch = useDispatch();
+  const setData = dispatch({ type: "REMOVE_TABLE2" });
 
   const remove = (index) => {
-    const tempRows = [...rows];
-    tempRows.splice(index, 1);
-    setRows(tempRows);
+    const tempRows1 = [...data1];
+    tempRows1.splice(index, 1);
+    setData(tempRows1);
   };
+
   return (
     <DashboardTemplate>
       {/* <Link to={"/"}></Link> */}
@@ -36,7 +41,7 @@ export default function Yetkazilgan() {
           </tr>
         </thead>
         <tbody>
-          {rows.map((item, index) => {
+          {data1.map((item, index) => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
