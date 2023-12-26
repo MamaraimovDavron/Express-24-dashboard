@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
 // import { Link } from "react-router-dom";
 import data from "./data";
@@ -15,6 +15,13 @@ const dataThead = [
 ];
 
 export default function Yetkazilgan() {
+  const [rows, setRows] = useState(data);
+
+  const remove = (index) => {
+    const tempRows = [...rows];
+    tempRows.splice(index, 1);
+    setRows(tempRows);
+  };
   return (
     <DashboardTemplate>
       {/* <Link to={"/"}></Link> */}
@@ -29,7 +36,7 @@ export default function Yetkazilgan() {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => {
+          {rows.map((item, index) => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
@@ -40,6 +47,11 @@ export default function Yetkazilgan() {
                 <td>{item.umumiy_narx}</td>
                 <td>{item.telefon_raqam}</td>
                 <td>{item.izoh}</td>
+                <td>
+                  <button className="btn btn-danger" onClick={remove}>
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </td>
               </tr>
             );
           })}

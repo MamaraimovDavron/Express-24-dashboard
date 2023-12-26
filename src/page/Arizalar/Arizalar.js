@@ -16,7 +16,7 @@ const dataThead = [
 
 export default function Arizalar() {
   const [rows, setRows] = useState(data);
-  const rmdir = (index) => {
+  const remove = (index) => {
     const tempRows = [...rows];
     tempRows.splice(index, 1);
     setRows(tempRows);
@@ -48,7 +48,7 @@ export default function Arizalar() {
                 <td>{item.telefon_raqam}</td>
                 <td>{item.izoh}</td>
                 <td>
-                  <button className="btn btn-danger" onClick={rmdir}>
+                  <button className="btn btn-danger" onClick={remove}>
                     <i class="bi bi-trash"></i>
                   </button>
                 </td>
