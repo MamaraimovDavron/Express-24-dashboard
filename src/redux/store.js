@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunker";
+import { createStore } from "redux";
+// import { composeWithDevTools } from "redux-devtools-extension";
+// import thunk from "redux-thunker";
 // import data from "../page/Foydalanuvchilar/data";
 
 const initialState = {
@@ -80,6 +80,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(reducer);
 
 export default store;
