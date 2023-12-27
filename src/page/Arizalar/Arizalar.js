@@ -17,16 +17,16 @@ const dataThead = [
 
 export default function Arizalar() {
   // const [rows, setRows] = useState([]);
-  const data = useSelector((state) => state.data);
+  const data1 = useSelector((state) => state.data1);
   const dispatch = useDispatch();
-  const setData = dispatch({ type: "REMOVE_TABLE" });
 
-  const remove = (index) => {
-    const tempRows = [...data];
-    tempRows.splice(index, 1);
-    setData(tempRows);
+  const remove1 = (index) => {
+    dispatch({ type: "REMOVE_TABLE1", payload: index });
   };
 
+  const handleRemove1 = (index) => {
+    remove1();
+  };
   return (
     <DashboardTemplate>
       {/* <Link to={"/"}></Link> */}
@@ -35,13 +35,13 @@ export default function Arizalar() {
       <table className="table table-hover">
         <thead>
           <tr>
-            {dataThead.map((item) => {
-              return <th>{item}</th>;
+            {dataThead.map((item, index) => {
+              return <th key={index}>{item}</th>;
             })}
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => {
+          {data1.map((item, index) => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
@@ -53,7 +53,7 @@ export default function Arizalar() {
                 <td>{item.telefon_raqam}</td>
                 <td>{item.izoh}</td>
                 <td>
-                  <button className="btn btn-danger" onClick={remove}>
+                  <button className="btn btn-danger" onClick={handleRemove1}>
                     <i class="bi bi-trash"></i>
                   </button>
                 </td>

@@ -1,8 +1,8 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import DashboardTemplate from "../../components/DashboardTemplate";
 // import { Link } from "react-router-dom";
 // import data from "./data";
-import { useSelector, useDispatch } from "react-redux";
 
 const dataThead = [
   "#",
@@ -16,17 +16,16 @@ const dataThead = [
 ];
 
 export default function Yetkazilgan() {
-  // const [rows, setRows] = useState(data);
-  const data1 = useSelector((state) => state.data);
+  const data = useSelector((state) => state.data);
   const dispatch = useDispatch();
-  const setData = dispatch({ type: "REMOVE_TABLE2" });
 
   const remove = (index) => {
-    const tempRows1 = [...data1];
-    tempRows1.splice(index, 1);
-    setData(tempRows1);
+    dispatch({ type: "REMOVE_TABLE", payload: index });
   };
 
+  const handleRemove = (index) => {
+    remove();
+  };
   return (
     <DashboardTemplate>
       {/* <Link to={"/"}></Link> */}
@@ -41,7 +40,7 @@ export default function Yetkazilgan() {
           </tr>
         </thead>
         <tbody>
-          {data1.map((item, index) => {
+          {data.map((item, index) => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
@@ -53,7 +52,7 @@ export default function Yetkazilgan() {
                 <td>{item.telefon_raqam}</td>
                 <td>{item.izoh}</td>
                 <td>
-                  <button className="btn btn-danger" onClick={remove}>
+                  <button className="btn btn-danger" onClick={handleRemove}>
                     <i class="bi bi-trash"></i>
                   </button>
                 </td>
