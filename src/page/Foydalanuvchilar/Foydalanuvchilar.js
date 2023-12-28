@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import DashboardTemplate from "../../components/DashboardTemplate";
-import data1 from "./data";
 import EditCard from "./EditCard";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Foydalanuvchilar() {
-  const Data = data1;
-
+  const data2 = useSelector((state) => state.data2);
   const dispatch = useDispatch();
-  const [data, setRows] = useState(Data);
+  // const [data, setRows] = useState(Data);
   const edit = useSelector((state) => state.edit);
 
-  const setEdit = () => {
+  const myEdit = () => {
     dispatch({ type: "EDIT" });
   };
 
-  // const [edit, setEdit] = useState(false);
+  const editBtn = () => {
+    myEdit();
+  };
 
-  // const data = useSelector((state) => state.data);
-  // const setRows = () => {};
+  const remove2 = (index) => {
+    dispatch({ type: "REMOVE_TABLE2", payload: index });
+  };
 
-  const remove = (index) => {
-    const tempRows = [...data];
-    tempRows.splice(index, 1);
-    setRows(tempRows);
+  const handleRemove2 = (index) => {
+    remove2();
   };
 
   return (
@@ -44,7 +43,7 @@ export default function Foydalanuvchilar() {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => {
+          {data2.map((item, index) => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
@@ -52,16 +51,10 @@ export default function Foydalanuvchilar() {
                 <td>{item.raqam}</td>
                 <td>{item.rol}</td>
                 <td>
-                  <button
-                    className="btn btn-primary me-2"
-                    onClick={() => {
-                      setEdit(!edit);
-                      console.log(edit);
-                    }}
-                  >
+                  <button className="btn btn-primary me-2" onClick={editBtn}>
                     <i class="bi bi-pen-fill"></i>
                   </button>
-                  <button className="btn btn-danger" onClick={remove}>
+                  <button className="btn btn-danger" onClick={handleRemove2}>
                     <i class="bi bi-trash3-fill"></i>
                   </button>
                 </td>

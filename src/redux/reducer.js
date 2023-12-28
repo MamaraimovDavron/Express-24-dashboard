@@ -1,6 +1,6 @@
 const initialState = {
   category: [{ title: "Pizza", completed: false }],
-  edit: true,
+  edit: false,
   display: true,
   addDisplay: false,
   taom: false,
@@ -98,6 +98,20 @@ const initialState = {
       izoh: "lorem ipsum",
     },
   ],
+  data2: [
+    { ism: "Abdulaziz Ochilov", raqam: "+998 97 888 10 27", rol: "admin" },
+    { ism: "Ergashev Islom", raqam: "+998 97 888 12 35", rol: "yetkazuvchi" },
+    {
+      ism: "Samidullayev Bahodir",
+      raqam: "+998 93 234 10 23",
+      rol: "foydalanuvchi",
+    },
+    {
+      ism: "To’ramurodov Shoislom",
+      raqam: "+998 90 375 67 15",
+      rol: "foydalanuvchi",
+    },
+  ],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -106,6 +120,7 @@ const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case "EDIT":
       return {
+        ...state,
         edit: !state.edit,
       };
 
@@ -146,6 +161,11 @@ const reducer = (state = initialState, action = {}) => {
       const data1 = [...state.data1];
       data1.splice(action.payload, 1);
       return { ...state, data1 };
+
+    case "REMOVE_TABLE2":
+      const data2 = [...state.data2];
+      data2.splice(action.payload, 1);
+      return { ...state, data2 };
     default:
       return state;
   }
